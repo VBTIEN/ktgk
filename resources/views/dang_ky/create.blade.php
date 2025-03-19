@@ -21,12 +21,19 @@
                         </select>
                         <small class="text-muted">Nhấn giữ Ctrl để chọn nhiều học phần</small>
                     </div>
-                    <button type="submit" class="btn btn-primary">Thêm vào học phần</button>
+                    <button type="submit" class="btn btn-primary">Thêm vào danh sách đăng ký</button>
                 </form>
 
                 <!-- Hiển thị giỏ hàng -->
-                <h3 class="mt-5">Danh sách Học Phần</h3>
+                <h3 class="mt-5">Danh sách Học Phần chưa lưu</h3>
                 @if (!empty($gioHang))
+                    <div class="d-flex justify-content-end mb-3">
+                        <form action="{{ route('dang-ky.xoa-tat-ca-gio-hang', $sinhVien->ma_sv) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa tất cả học phần trong giỏ hàng?')">Xóa Tất Cả</button>
+                        </form>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-striped mt-3">
                             <thead>
@@ -71,7 +78,7 @@
                         <button type="submit" class="btn btn-success">Lưu Đăng Ký</button>
                     </form>
                 @else
-                    <p class="text-muted">Chưa có học phần nào trong giỏ hàng.</p>
+                    <p class="text-muted">Chưa có học phần nào trong danh sách.</p>
                 @endif
 
                 <div class="mt-4">

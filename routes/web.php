@@ -40,6 +40,7 @@ Route::resource('hoc-phans', HocPhanController::class);
 Route::get('dang-ky/{ma_sv}', [DangKyController::class, 'create'])->name('dang-ky.create');
 Route::post('dang-ky/them-gio-hang/{ma_sv}', [DangKyController::class, 'themVaoGioHang'])->name('dang-ky.them-gio-hang');
 Route::delete('dang-ky/xoa-gio-hang/{ma_sv}/{ma_hp}', [DangKyController::class, 'xoaKhoiGioHang'])->name('dang-ky.xoa-gio-hang');
+Route::delete('dang-ky/xoa-tat-ca-gio-hang/{ma_sv}', [DangKyController::class, 'xoaTatCaGioHang'])->name('dang-ky.xoa-tat-ca-gio-hang'); // Route mới
 Route::post('dang-ky/luu/{ma_sv}', [DangKyController::class, 'luuDangKy'])->name('dang-ky.luu');
 
 Route::get('dang-ky/danh-sach/{ma_sv}', [DangKyController::class, 'danhSach'])->name('dang-ky.danh-sach');

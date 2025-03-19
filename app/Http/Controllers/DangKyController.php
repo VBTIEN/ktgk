@@ -69,6 +69,17 @@ class DangKyController extends Controller
             ->with('success', 'Xóa học phần khỏi giỏ hàng thành công!');
     }
 
+    public function xoaTatCaGioHang(string $ma_sv)
+    {
+        $sinhVien = SinhVien::findOrFail($ma_sv);
+
+        // Xóa toàn bộ giỏ hàng trong session
+        session()->forget('gio_hang');
+
+        return redirect()->route('dang-ky.create', $sinhVien->ma_sv)
+            ->with('success', 'Xóa tất cả học phần trong giỏ hàng thành công!');
+    }
+
     // Lưu thông tin đăng ký từ giỏ hàng vào database
     public function luuDangKy(Request $request, string $ma_sv)
     {
